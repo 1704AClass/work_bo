@@ -5,6 +5,7 @@ D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TSet
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TRolePermissionExample.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TRoleExample.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TCheckgroupCheckitemExample.java
+D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\entity\Result.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TCheckgroup.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TSetmeal.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TCheckitem.java
@@ -24,5 +25,7 @@ D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TRol
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TCheckgroupCheckitemKey.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TMenuExample.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TRoleMenuExample.java
+D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\entity\PageResult.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TPermissionExample.java
 D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\pojo\TUserExample.java
+D:\学习\电商上\health_parent\health_pojo\src\main\java\com\health\entity\QueryPageBean.java

@@ -9,11 +9,11 @@ import com.health.service.WangTestSerice;
 @Service
 public class WangTestSericeImpl implements WangTestSerice{
 
-	@Autowired 
-	TUserMapper userMapper;
+
 	@Override
 	public TUser findAll() {
-		return userMapper.selectByExample(null).get(0);
+		//return userMapper.selectByExample(null).get(0);
+		return new TUser();
 	}
 
 }
