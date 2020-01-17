@@ -1,5 +1,7 @@
 package com.health.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +14,7 @@ import com.health.pojo.TCheckitem;
 import com.health.service.CheckItemService;
 
 @RestController
-@RequestMapping("/checkItem")
+@RequestMapping("/checkItem")//检查项管理
 public class CheckItemController {
 
     @Reference
@@ -55,6 +57,15 @@ public class CheckItemController {
     @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
     	return checkItemService.findPage(queryPageBean.getCurrentPage(), queryPageBean.getPageSize(), queryPageBean.getQueryString());
+    }
+    /**
+     * 查询检查项所有数据
+     * @param queryPageBean
+     * @return
+     */
+    @RequestMapping("/findAll")
+    public List<TCheckitem> findAll(){
+    	return checkItemService.findAll();
     }
     /**
      * 查询一个对象 （修改回现）

@@ -1,8 +1,11 @@
 package com.health.mapper;
 
+import com.github.pagehelper.Page;
 import com.health.pojo.TCheckgroup;
 import com.health.pojo.TCheckgroupExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TCheckgroupMapper {
@@ -27,4 +30,6 @@ public interface TCheckgroupMapper {
     int updateByPrimaryKeySelective(TCheckgroup record);
 
     int updateByPrimaryKey(TCheckgroup record);
+
+	Page<TCheckgroup> findPageAndEQ(@Param("mohu")String queryString);
 }

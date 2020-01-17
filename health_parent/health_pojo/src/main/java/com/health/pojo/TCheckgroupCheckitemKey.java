@@ -1,6 +1,8 @@
 package com.health.pojo;
 
-public class TCheckgroupCheckitemKey {
+import java.io.Serializable;
+
+public class TCheckgroupCheckitemKey implements Serializable{
     private Integer checkgroupId;
 
     private Integer checkitemId;

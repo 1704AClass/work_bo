@@ -1,5 +1,7 @@
 package com.health.service;
 
+import java.util.List;
+
 import com.health.entity.PageResult;
 import com.health.pojo.TCheckitem;
 
@@ -14,4 +16,6 @@ public interface CheckItemService {
 	public void delete(Integer id);
 	
 	public TCheckitem findById(Integer id);
+
+	public List<TCheckitem> findAll();
 }

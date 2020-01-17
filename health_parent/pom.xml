@@ -258,5 +258,6 @@
     		<module>health_pojo</module>
     		<module>health_dao</module>
     		<module>health_backend</module>
+    		<module>health-service-provider</module>
     	</modules>
 </project>

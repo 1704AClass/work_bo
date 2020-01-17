@@ -91,6 +91,16 @@
     from t_checkgroup
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="findPageAndEQ" parameterType="string" resultType="com.health.pojo.TCheckgroup">
+    select * from t_checkgroup
+    <if test="mohu != null and mohu.length>0">
+     where code =#{mohu} or name=#{mohu} or helpcode=#{mohu}
+    </if>
+   
+  </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_checkgroup
     where id = #{id,jdbcType=INTEGER}
@@ -101,7 +111,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.health.pojo.TCheckgroup" >
+  <insert id="insert" parameterType="com.health.pojo.TCheckgroup" useGeneratedKeys="true" keyProperty="id">
     insert into t_checkgroup (id, code, name, 
       helpCode, sex, remark, 
       attention)
@@ -230,7 +240,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.health.pojo.TCheckgroup" >
+  <update id="updateByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="com.health.pojo.TCheckgroup" >
     update t_checkgroup
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
