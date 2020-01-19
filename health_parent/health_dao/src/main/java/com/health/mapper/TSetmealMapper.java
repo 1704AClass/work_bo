@@ -1,8 +1,11 @@
 package com.health.mapper;
 
+import com.github.pagehelper.Page;
 import com.health.pojo.TSetmeal;
 import com.health.pojo.TSetmealExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TSetmealMapper {
@@ -27,4 +30,6 @@ public interface TSetmealMapper {
     int updateByPrimaryKeySelective(TSetmeal record);
 
     int updateByPrimaryKey(TSetmeal record);
+
+	Page<TSetmeal> findByPage(@Param("mohu")String queryString);
 }

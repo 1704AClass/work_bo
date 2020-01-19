@@ -1,3 +1,4 @@
 com\health\controller\CheckItemController.class
 com\health\controller\CheckGroupController.class
+com\health\controller\SetMealController.class
 com\health\controller\WangBoController.class

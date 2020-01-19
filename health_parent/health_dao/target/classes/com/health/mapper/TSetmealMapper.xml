@@ -88,6 +88,13 @@
       order by ${orderByClause}
     </if>
   </select>
+  
+  <select id="findByPage" parameterType="string" resultType="com.health.pojo.TSetmeal">
+  select * from t_setmeal
+    <if test="mohu!=null and mohu.length>0">
+       where code=#{mohu} or name=#{mohu} or helpCode=#{mohu}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -98,13 +105,13 @@
     delete from t_setmeal
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.health.pojo.TSetmealExample">
+  <delete id="deleteByExample"  parameterType="com.health.pojo.TSetmealExample">
     delete from t_setmeal
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.health.pojo.TSetmeal">
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.health.pojo.TSetmeal">
     insert into t_setmeal (id, name, code, 
       helpCode, sex, age, price, 
       remark, attention, img
@@ -274,7 +281,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.health.pojo.TSetmeal">
+  <update id="updateByPrimaryKey" useGeneratedKeys="true" keyProperty="id" parameterType="com.health.pojo.TSetmeal">
     update t_setmeal
     set name = #{name,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},

@@ -192,11 +192,7 @@
 			<artifactId>jedis</artifactId> 
 			<version>${jedis.version}</version> 
 		</dependency> 
-		<dependency> 
-			<groupId>org.springframework.data</groupId> 
-			<artifactId>spring-data-redis</artifactId> 
-			<version>1.7.2.RELEASE</version> 
-		</dependency>
+		
 		<!-- 安全框架 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -259,5 +255,6 @@
     		<module>health_dao</module>
     		<module>health_backend</module>
     		<module>health-service-provider</module>
+    		<module>health_jobs</module>
     	</modules>
 </project>

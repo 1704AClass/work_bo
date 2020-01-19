@@ -7,7 +7,7 @@
   </parent>
   <artifactId>health_service_provider</artifactId>
   <packaging>war</packaging>
-   <dependencies>
+<dependencies>
   	<dependency>
   		<groupId>com.wb</groupId>
   		<artifactId>health_interface</artifactId>

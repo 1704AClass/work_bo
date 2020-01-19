@@ -288,7 +288,7 @@
                 	 //请求后台  
                 	axios.post("/checkItem/findPage.do",param).then((a)=> { 
                 		   //为模型数据赋值，基于VUE的双向绑定展示到页面   
-                		console.log(a);
+                		//console.log(a);
                 	  this.dataList = a.data.rows; 
                 	   this.pagination.total = a.data.total;  
                 	});
@@ -306,7 +306,7 @@
                 handleUpdate(row) {
                 	this.dialogFormVisible4Edit=true;
                 	axios.get('/checkItem/findById.do?id='+row.id).then((a)=>{
-                		console.log(a);
+                		//console.log(a);
                 		this.formData=a.data;
                 	})
                 },

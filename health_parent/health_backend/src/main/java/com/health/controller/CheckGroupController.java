@@ -1,5 +1,7 @@
 package com.health.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -103,6 +105,20 @@ public class CheckGroupController {
     	return checkGroupService.findById(id);
     }
     
+    /**
+     * 查询所有组
+     * @return
+     */
+    @RequestMapping("/findAll")
+	public List<TCheckgroup> findAll() {
+		return checkGroupService.findAll();
+	}
+    
+	/**
+	 * 删除组和组的子分支
+	 * @param id
+	 * @return
+	 */
     @RequestMapping("/deleteById")
     public Result deleteById(Integer id){
     	try {

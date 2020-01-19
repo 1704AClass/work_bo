@@ -22,4 +22,11 @@ public class TSetmealCheckgroupKey implements Serializable{
     public void setCheckgroupId(Integer checkgroupId) {
         this.checkgroupId = checkgroupId;
     }
+
+	@Override
+	public String toString() {
+		return "TSetmealCheckgroupKey [setmealId=" + setmealId
+				+ ", checkgroupId=" + checkgroupId + "]";
+	}
+    
 }

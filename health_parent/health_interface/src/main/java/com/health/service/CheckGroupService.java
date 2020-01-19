@@ -1,5 +1,7 @@
 package com.health.service;
 
+import java.util.List;
+
 import com.health.entity.PageResult;
 import com.health.entity.WanNeng;
 import com.health.pojo.TCheckgroup;
@@ -19,4 +21,6 @@ public interface CheckGroupService {
 	public void delete(Integer id);
 	
 	public WanNeng findById(Integer id);
+	
+	public List<TCheckgroup> findAll();
 }
