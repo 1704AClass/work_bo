@@ -1,6 +1,8 @@
 package com.health.service;
 
 
+import java.util.List;
+
 import com.health.entity.PageResult;
 import com.health.entity.WanNeng;
 import com.health.pojo.TSetmeal;
@@ -20,4 +22,8 @@ public interface SetMealService {
 	public void addFileName(String fileName);
 	
 	public void addchenggou(String fileName);
+
+	public List<TSetmeal> findAll();
+
+	public WanNeng findDetailById(Integer id);
 }

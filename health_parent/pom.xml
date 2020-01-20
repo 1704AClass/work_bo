@@ -257,5 +257,6 @@
     		<module>health-service-provider</module>
     		<module>health_jobs</module>
     		<module>health_service</module>
+    		<module>health_mobile</module>
     	</modules>
 </project>

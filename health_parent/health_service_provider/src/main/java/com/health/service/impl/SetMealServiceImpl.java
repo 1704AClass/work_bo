@@ -12,10 +12,15 @@ import com.github.pagehelper.PageHelper;
 import com.health.entity.PageResult;
 import com.health.entity.QueryPageBean;
 import com.health.entity.WanNeng;
+import com.health.mapper.TCheckgroupCheckitemMapper;
+import com.health.mapper.TCheckgroupMapper;
 import com.health.mapper.TCheckitemMapper;
 import com.health.mapper.TSetmealCheckgroupMapper;
 import com.health.mapper.TSetmealMapper;
 import com.health.pojo.TCheckgroup;
+import com.health.pojo.TCheckgroupCheckitemExample;
+import com.health.pojo.TCheckgroupCheckitemKey;
+import com.health.pojo.TCheckgroupExample;
 import com.health.pojo.TCheckitem;
 import com.health.pojo.TCheckitemExample;
 import com.health.pojo.TSetmeal;
@@ -30,6 +35,10 @@ public class SetMealServiceImpl implements SetMealService{
 	private TCheckitemMapper checkitemMapper;
 	@Autowired
 	private TSetmealMapper setmealMapper;
+	@Autowired
+	private TCheckgroupCheckitemMapper checkgroupCheckitemMapper;
+	@Autowired
+	private TCheckgroupMapper checkgroupMapper;
 	@Autowired
 	private TSetmealCheckgroupMapper setmealCheckgroupMapper;
 	@Autowired
@@ -89,7 +98,9 @@ public class SetMealServiceImpl implements SetMealService{
 
 	@Override
 	public WanNeng findById(Integer id) {
+		System.out.println("ss"+id);
 		TSetmeal setmeal = setmealMapper.selectByPrimaryKey(id);
+		System.out.println(setmeal.getName());
 		TSetmealCheckgroupExample example = new TSetmealCheckgroupExample();
 		example.createCriteria().andSetmealIdEqualTo(id);
 		List list1=new ArrayList();
@@ -108,6 +119,52 @@ public class SetMealServiceImpl implements SetMealService{
 	public void addchenggou(String fileName) {
 		redisTemplate.boundSetOps("addchengguo").add(fileName);
 
+	}
+	@Override
+	public List<TSetmeal> findAll() {
+		return setmealMapper.selectByExample(null);
+	}
+	@Override
+	public WanNeng findDetailById(Integer id) {
+		TSetmeal setmeal = setmealMapper.selectByPrimaryKey(id);
+		TSetmealCheckgroupExample example = new TSetmealCheckgroupExample();
+		example.createCriteria().andSetmealIdEqualTo(id);
+		List<WanNeng> list2= new ArrayList<>();
+		
+		List<TSetmealCheckgroupKey> list = setmealCheckgroupMapper.selectByExample(example);
+		
+		for (TSetmealCheckgroupKey tSetmealCheckgroupKey : list) {
+			//根据中间表检查组的id进行查询检查组
+			TCheckgroupExample example2 = new TCheckgroupExample();
+			example2.createCriteria().andIdEqualTo(tSetmealCheckgroupKey.getCheckgroupId());
+			List<TCheckgroup> selectByExample = checkgroupMapper.selectByExample(example2);
+			
+			
+			
+			//然后根据检查组id去检查项和检查组的中间表
+			for (TCheckgroup tCheckgroup : selectByExample) {
+				WanNeng wanNeng = new WanNeng();
+				wanNeng.setData(tCheckgroup);
+				TCheckgroupCheckitemExample tCheckgroupCheckitemExample = new TCheckgroupCheckitemExample();
+				tCheckgroupCheckitemExample.createCriteria().andCheckgroupIdEqualTo(tCheckgroup.getId());
+				List<TCheckgroupCheckitemKey> ceckgroupCheckitemlist = checkgroupCheckitemMapper.selectByExample(tCheckgroupCheckitemExample);
+				
+				//检查项和检查组的中间表去查询
+				for (TCheckgroupCheckitemKey tCheckgroupCheckitemKey : ceckgroupCheckitemlist) {
+					TCheckitemExample example3 = new TCheckitemExample();
+					example2.createCriteria().andIdEqualTo(tCheckgroupCheckitemKey.getCheckitemId());
+					List<TCheckitem> selectByExample2 = checkitemMapper.selectByExample(example3);
+					
+					wanNeng.setData1(selectByExample2);
+				}
+				list2.add(wanNeng);
+			}
+		}
+		
+		
+		
+		
+		return new WanNeng(setmeal,list2);
 	}
 	
 	
