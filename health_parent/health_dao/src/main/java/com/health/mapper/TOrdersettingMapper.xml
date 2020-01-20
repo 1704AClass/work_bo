@@ -82,6 +82,9 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="getOrderSettingByMonth" parameterType="hashmap" resultType="com.health.pojo.TOrdersetting">
+      select * from t_ordersetting where orderDate between #{dateBegin} and #{dateEnd}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -192,5 +195,8 @@
       number = #{number,jdbcType=INTEGER},
       reservations = #{reservations,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="editNumberByOrderDate"  parameterType="com.health.pojo.TOrdersetting">
+       update t_ordersetting set number = #{number} where orderDate = #{orderDate}
   </update>
 </mapper>

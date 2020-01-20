@@ -96,6 +96,16 @@ public class SetMealServiceImpl implements SetMealService{
 		}
 		return new WanNeng(setmeal, list1);
 	}
+	@Override
+	public void addFileName(String fileName) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void addchenggou(String fileName) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

@@ -1,4 +1,5 @@
+com\health\service\impl\WangTestSericeImpl.class
+com\health\service\impl\OrderSettingServiceImpl.class
 com\health\service\impl\CheckItemServiceImpl.class
 com\health\service\impl\SetMealServiceImpl.class
 com\health\service\impl\CheckGroupServiceImpl.class
-com\health\service\impl\WangTestSericeImpl.class

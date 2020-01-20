@@ -256,5 +256,6 @@
     		<module>health_backend</module>
     		<module>health-service-provider</module>
     		<module>health_jobs</module>
+    		<module>health_service</module>
     	</modules>
 </project>

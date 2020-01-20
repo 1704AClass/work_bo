@@ -43,4 +43,18 @@ public class TOrdersetting implements Serializable{
     public void setReservations(Integer reservations) {
         this.reservations = reservations;
     }
+
+	public TOrdersetting(Integer id, Date orderdate, Integer number,
+			Integer reservations) {
+		super();
+		this.id = id;
+		this.orderdate = orderdate;
+		this.number = number;
+		this.reservations = reservations;
+	}
+	public TOrdersetting(Date orderdate, Integer number) {
+		this.orderdate = orderdate;
+		this.number = number;
+	}
+    
 }

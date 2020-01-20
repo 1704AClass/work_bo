@@ -18,6 +18,16 @@
   		<artifactId>health_pojo</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  
+  	<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+  		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	</dependency>
   	<dependency>
   		<groupId>com.wb</groupId>
   		<artifactId>health_dao</artifactId>
