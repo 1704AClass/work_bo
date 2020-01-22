@@ -63,4 +63,15 @@ public class TOrder implements Serializable{
     public void setSetmealId(Integer setmealId) {
         this.setmealId = setmealId;
     }
+
+	public TOrder( Integer memberId, Date orderdate,
+			String ordertype, String orderstatus, Integer setmealId) {
+		super();
+		this.memberId = memberId;
+		this.orderdate = orderdate;
+		this.ordertype = ordertype;
+		this.orderstatus = orderstatus;
+		this.setmealId = setmealId;
+	}
+    
 }

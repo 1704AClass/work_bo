@@ -26,4 +26,8 @@ public interface SetMealService {
 	public List<TSetmeal> findAll();
 
 	public WanNeng findDetailById(Integer id);
+
+	public Boolean sendSmsCode(String telephone);
+	
+	public String sgetSmsCode(String telephone);
 }

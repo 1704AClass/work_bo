@@ -33,7 +33,7 @@
             <div class="contentBox">
                 <div class="card">
                     <div class="">
-                        <img :src="'http://pqjroc654.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
+                        <img :src="'http://q4agbiq2c.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
                     </div>
                     <div class="project-text">
                         <h4 class="tit">{{setmeal.name}}</h4>
@@ -113,12 +113,49 @@
                 methods:{
                     //发送验证码
                     sendValidateCode(){
+                    	//获取输入的手机号
+                    	var telephone=this.orderInfo.telephone;
+                    	//效验手机号是否正确
+                    	if(!checkTelephone(telephone)){
+                    		this.$message.error('请输入正确的手机号');
+                    		return false;
+                    	}
+                    	
+                    	validateCodeButton = $("#validateCodeButton")[0];
+                    	clock = window.setInterval(doLoop, 1000); //一秒执行一次
+                    	
+                    	//发送验证码
+                    	axios.post('/validateCode/sendsms.do').then((a)=>{
+                    		if(!a.data.flag){
+                    			//验证码发送失败
+                    			alert("发送失败");
+                    		}
+                    	})
                     },
                     //提交预约
                     submitOrder(){
+                    	if(!checkIdCard(this.orderInfo.idCard)){
+                    		this.$message.error("身份证号码输入错误，请重新输入");
+                    		return ;
+                    	}
+                    	
+                    	axios.post('/order/submit.do',this.orderInfo).then((a)=>{
+                    		console.log(a);
+                    		if(a.data.flag){
+                    			//预约成功跳到预约成功页面
+                    			location.href="orderSuccess.html?orderId="+a.data.data;
+                    		}else{
+                    			alert("预约失败");
+                    		}
+                    	})
                     }
                 },
+              //钩子函数，VUE对象初始化完成后自动执行
                 mounted(){
+                	axios.post('/setmeal/findDetailById.do?id='+id).then((a)=>{
+                		console.log(a)
+                		this.setmeal=a.data.data;
+                	})
                 }
             });
         </script>

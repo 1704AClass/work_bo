@@ -2,11 +2,13 @@ package com.health.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.aliyuncs.exceptions.ClientException;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.health.entity.PageResult;
@@ -28,6 +30,8 @@ import com.health.pojo.TSetmealCheckgroupExample;
 import com.health.pojo.TSetmealCheckgroupKey;
 import com.health.service.CheckItemService;
 import com.health.service.SetMealService;
+import com.health.utils.SMSUtils;
+import com.health.utils.ValidateCodeUtils;
 @Service
 public class SetMealServiceImpl implements SetMealService{
 
@@ -165,6 +169,30 @@ public class SetMealServiceImpl implements SetMealService{
 		
 		
 		return new WanNeng(setmeal,list2);
+	}
+	@Override
+	public Boolean sendSmsCode(String telephone) {
+        Boolean flag=false;
+		String code4String = ValidateCodeUtils.generateValidateCode4String(4);
+		System.out.println(code4String);
+		try {
+			//SMSUtils.sendSms(telephone, code4String);
+			System.out.println("发送短信中");
+			System.out.println("发送成功");
+			redisTemplate.boundValueOps(telephone).setIfAbsent(code4String);
+			redisTemplate.boundValueOps(telephone).expire(1, TimeUnit.MINUTES);
+			flag=true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	@Override
+	public String sgetSmsCode(String telephone) {
+
+		String telephone1=(String) redisTemplate.boundValueOps(telephone).get();
+		return telephone1;
 	}
 	
 	
