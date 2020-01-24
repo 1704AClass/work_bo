@@ -23,7 +23,7 @@ import com.health.pojo.TSetmealCheckgroupKey;
 import com.health.service.CheckItemService;
 import com.health.service.SetMealService;
 @Service
-public class SetMealServiceImpl implements SetMealService{
+public class SetMealServiceImpl {
 
 	@Autowired
 	private TCheckitemMapper checkitemMapper;
@@ -32,7 +32,6 @@ public class SetMealServiceImpl implements SetMealService{
 	@Autowired
 	private TSetmealCheckgroupMapper setmealCheckgroupMapper;
 
-	@Override
 	public void add(TSetmeal setmeal, Integer[] ids) {
       
 		setmealMapper.insert(setmeal);  //添加套餐管理
@@ -56,7 +55,6 @@ public class SetMealServiceImpl implements SetMealService{
 		}
 	}
 
-	@Override
 	public void update(TSetmeal setmeal, Integer[] ids) {
   
 		setmealMapper.updateByPrimaryKey(setmeal);  //修改
@@ -67,7 +65,7 @@ public class SetMealServiceImpl implements SetMealService{
 		
 	}
 
-	@Override
+
 	public PageResult findPage(Integer page, Integer size, String queryString) {
 
 		PageHelper.startPage(page, size);
@@ -75,7 +73,6 @@ public class SetMealServiceImpl implements SetMealService{
 		return new PageResult(pages.getTotal(), pages.getResult());
 	}
 
-	@Override
 	public void delete(Integer id) {
         setmealMapper.deleteByPrimaryKey(id);// 删除
 		TSetmealCheckgroupExample example = new TSetmealCheckgroupExample();
@@ -84,7 +81,6 @@ public class SetMealServiceImpl implements SetMealService{
 		
 	}
 
-	@Override
 	public WanNeng findById(Integer id) {
 		TSetmeal setmeal = setmealMapper.selectByPrimaryKey(id);
 		TSetmealCheckgroupExample example = new TSetmealCheckgroupExample();
@@ -96,15 +92,29 @@ public class SetMealServiceImpl implements SetMealService{
 		}
 		return new WanNeng(setmeal, list1);
 	}
-	@Override
 	public void addFileName(String fileName) {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
 	public void addchenggou(String fileName) {
 		// TODO Auto-generated method stub
 		
+	}
+	public List<TSetmeal> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public WanNeng findDetailById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Boolean sendSmsCode(String telephone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public String sgetSmsCode(String telephone) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

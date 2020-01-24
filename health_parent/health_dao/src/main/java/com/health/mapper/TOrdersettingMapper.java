@@ -43,4 +43,7 @@ public interface TOrdersettingMapper {
 	long findCountByOrderDate(@Param("orderdate")Date orderdate);
 
 	void editNumberByOrderDate(TOrdersetting orderSetting);
+
+	@Select("select * from t_ordersetting where orderDate=#{date}")
+	TOrdersetting findByOrderdateId(@Param("date")Date date);
 }

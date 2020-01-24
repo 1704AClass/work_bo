@@ -90,8 +90,7 @@
                         </div>
                         <div class="date">
                             <label>体检日期</label>
-                            <i class="icon-date" class="picktime"></i>
-                            <input v-model="orderInfo.orderDate" type="text" class="picktime" readonly>
+                            <input v-model="orderInfo.orderDate" type="text"  >
                         </div>
                     </form>
                     <div class="box-button">
@@ -125,7 +124,8 @@
                     	clock = window.setInterval(doLoop, 1000); //一秒执行一次
                     	
                     	//发送验证码
-                    	axios.post('/validateCode/sendsms.do').then((a)=>{
+                    	axios.post('/validateCode/sendsms.do?telephone='+telephone).then((a)=>{
+                    		console.log(a)
                     		if(!a.data.flag){
                     			//验证码发送失败
                     			alert("发送失败");

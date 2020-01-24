@@ -1,3 +1,5 @@
+com\health\service\impl\MumberServiceImpl.class
+com\health\service\impl\OrderServieImpl.class
 com\health\service\impl\WangTestSericeImpl.class
 com\health\service\impl\OrderSettingServiceImpl.class
 com\health\service\impl\CheckItemServiceImpl.class

@@ -2,7 +2,11 @@ package com.health.mapper;
 
 import com.health.pojo.TOrder;
 import com.health.pojo.TOrderExample;
+import com.health.pojo.TOrdersetting;
+
+import java.util.Date;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TOrderMapper {
@@ -27,4 +31,6 @@ public interface TOrderMapper {
     int updateByPrimaryKeySelective(TOrder record);
 
     int updateByPrimaryKey(TOrder record);
+
+    List<TOrder> findByCondition(TOrder order);
 }

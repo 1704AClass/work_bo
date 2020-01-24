@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.health.entity.PageResult;
 import com.health.entity.WanNeng;
+import com.health.pojo.TMember;
 import com.health.pojo.TSetmeal;
 
 public interface SetMealService {
@@ -30,4 +31,5 @@ public interface SetMealService {
 	public Boolean sendSmsCode(String telephone);
 	
 	public String sgetSmsCode(String telephone);
+
 }

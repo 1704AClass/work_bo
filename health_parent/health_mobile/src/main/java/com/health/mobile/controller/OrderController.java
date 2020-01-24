@@ -21,32 +21,31 @@ public class OrderController {
 	SetMealService setMealService;
 	
 	@RequestMapping("/submit")
-	public Result submitOeder(@RequestBody Map map){
+	public Result submitOeder(@RequestBody Map map) throws Exception{
 		String telephone=(String)map.get("telephone");
+		//System.out.println(telephone+"yz");
+		if(telephone==null && "".equals(telephone)){
+			return new Result(false, "请输入手机号");
+		}
 		String getRedisCode = setMealService.sgetSmsCode(telephone);
+		String validateCode =(String)map.get("validateCode");
 		if (getRedisCode==null) {
 			//验证码已经失效
 			return new Result(false, "验证码失效");
 		}
-		if (!telephone.equals(getRedisCode)) {
+		
+		//System.out.println("取出来"+getRedisCode);
+		if (validateCode ==null&&!telephone.equals(getRedisCode)) {
 			//验证码不正确
 			return new Result(false, "验证码不正确");
 		}
 		
-		Result result=null;
-		try {
-			map.put("orderType", "微信预约");
-			 result = orderService.order(map);
-		} catch (Exception e) {
-			// TODO: handle exception
-			return result;
-		}
+			 map.put("orderType", "微信预约");
+			 return orderService.order(map);
 		
-		if (result.isFlag()) {
+		
 			//预约成功发给短信通知用户
-			
-		}
-		return result;
+		
 		
 		
 	}

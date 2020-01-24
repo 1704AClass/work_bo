@@ -17,6 +17,7 @@ import com.health.entity.WanNeng;
 import com.health.mapper.TCheckgroupCheckitemMapper;
 import com.health.mapper.TCheckgroupMapper;
 import com.health.mapper.TCheckitemMapper;
+import com.health.mapper.TMemberMapper;
 import com.health.mapper.TSetmealCheckgroupMapper;
 import com.health.mapper.TSetmealMapper;
 import com.health.pojo.TCheckgroup;
@@ -25,6 +26,8 @@ import com.health.pojo.TCheckgroupCheckitemKey;
 import com.health.pojo.TCheckgroupExample;
 import com.health.pojo.TCheckitem;
 import com.health.pojo.TCheckitemExample;
+import com.health.pojo.TMember;
+import com.health.pojo.TMemberExample;
 import com.health.pojo.TSetmeal;
 import com.health.pojo.TSetmealCheckgroupExample;
 import com.health.pojo.TSetmealCheckgroupKey;
@@ -43,6 +46,8 @@ public class SetMealServiceImpl implements SetMealService{
 	private TCheckgroupCheckitemMapper checkgroupCheckitemMapper;
 	@Autowired
 	private TCheckgroupMapper checkgroupMapper;
+	@Autowired
+	private TMemberMapper memberMapper;
 	@Autowired
 	private TSetmealCheckgroupMapper setmealCheckgroupMapper;
 	@Autowired
@@ -179,7 +184,7 @@ public class SetMealServiceImpl implements SetMealService{
 			//SMSUtils.sendSms(telephone, code4String);
 			System.out.println("发送短信中");
 			System.out.println("发送成功");
-			redisTemplate.boundValueOps(telephone).setIfAbsent(code4String);
+			redisTemplate.boundValueOps(telephone).set(code4String);
 			redisTemplate.boundValueOps(telephone).expire(1, TimeUnit.MINUTES);
 			flag=true;
 		} catch (Exception e) {
