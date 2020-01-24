@@ -65,6 +65,19 @@ public class MumberServiceImpl implements MumberService{
 		}
 		memberMapper.insert(member);
 	}
+
+
+	@Override
+	public List<Integer> findMemberCountByMonth(List<String> moth) {
+
+		List<Integer> list = new ArrayList<>();
+		for (String m : moth) {
+			m =m+".31";//格式：2019.04.31
+			Integer count=memberMapper.findMemberCountByMonth(m);
+			list.add(count);
+		}
+		return list;
+	}
 	
 	
 

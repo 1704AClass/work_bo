@@ -33,4 +33,7 @@ public interface TMemberMapper {
 
     @Select("select * from t_member where phoneNumber=#{telephone}")
 	TMember findByTelephone(@Param("telephone")String telephone);
+
+    @Select("select count(id) from t_member where regTime &lt;= #{value}")
+	Integer findMemberCountByMonth(String m);
 }
